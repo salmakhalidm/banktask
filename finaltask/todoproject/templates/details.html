@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+                <div class=" shadow card">
+
+                    <div class="card-body ">
+                        <h5 class="card-title">{{detk.name}}</h5>
+                        <p><b>{{detk.subject}}</b></p>
+                         <p><b>{{detk.topic}}</b></p>
+                         <p><b>{{detk.txt}}</b></p>
+                         <p><b>{{detk.account}}</b></p>
+                         <p><b>{{detk.materials}}</b></p>
+                        <p><b>{{detk.materialss}}</b></p>
+                        <p><b>{{detk.materialsq}}</b></p>
+
+
+
+                        <a class="btn btn-danger" href="{% url 'delete' detk.id %}">Done</a>
+                        <a class="btn btn-success" href="{% url 'update' detk.id %}">Update</a>
+                    </div>
+                </div>
+                    <br>
+
+
+
+
+         {% endblock %}

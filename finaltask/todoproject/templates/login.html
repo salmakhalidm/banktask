@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<br>
+<body style="background-color:#7f85cd;">
+ <h1>Login page </h1>
+
+  <form action="login" method="post">
+    {% csrf_token %}
+
+<p>
+      <label>Username : <input type="text" name="username"  placeholder="enter username"/></label>
+    </p>
+
+
+
+
+<p>
+      <label>Password : <input type="password" name="password"  placeholder="enter password"/></label> <br>
+
+    </p>
+
+
+
+
+
+
+<p>
+       <button type="submit">Submit</button>
+    </p>
+
+   {% for msg in messages %}
+ <h2>  {{msg}} </h2>
+     <button class="btn btn-success" ><a href="registration">Click here to register</a></button>
+{% endfor %}
+  </form>
+</div>
+
+</body>
+</html>

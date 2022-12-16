@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+ <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
+
+        <a class="nav-link" href="view"  class="btn btn-secondary btn-block my_custom_button">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Districts
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Idukki' >Idukki</a> </li>
+            <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Ernakulam' >Ernakulam</a> </li>
+                      <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Kollam' >Kollam</a> </li>
+          <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Kozhikode' >Kozhikode</a> </li>
+          <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Kannur' >Kannur</a> </li>
+          <li><a class="dropdown-item" href='https://en.wikipedia.org/wiki/Kasargod' >Kasargod</a> </li>
+
+
+
+
+
+          </ul>
+
+
+      <li class="nav-item  ml-auto">
+
+									{% if user.is_authenticated %}
+									  <a class="nav-link"   class="btn btn-secondary btn-block my_custom_button" href="home">HI {{user.username}} </a> </li>
+  <li class="nav-item  ml-auto">
+        <a class="nav-link" href="logout"  class="btn btn-secondary btn-block my_custom_button">Log out</a> <li>
+
+									{% else %}
+
+
+        <a class="nav-link" href="login"  class="btn btn-secondary btn-block my_custom_button">Log in</a>
+									{% endif %}
+
+    </li>
+ <li class="nav-item ">
+
+        <a class="nav-link" href="registration"  class="btn btn-secondary btn-block my_custom_button" >Register</a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+

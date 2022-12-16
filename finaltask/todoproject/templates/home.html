@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="container">
+<h1 class="text-center">ACCOUNT OPENING</h1>
+    <br>
+<h5 class="text-center">Click on the button below to Fill the Form.</h5>
+    <h5 class="text-center">Your Data Will be Safe with us!!</h5>
+    <br>
+    <div class="text-center">
+<button class="btn btn-primary" onclick="openForm()">Open Form</button>
+<button class="btn btn-success" onclick="closeForm()"> Customer details </button>
+    </div>
+
+</p>
+
+
+     {% for msg in messages %}
+ <h2>  {{msg}} </h2>
+    <a href="view">Click here</a>
+{% endfor %}
+</div>
+
+<div class="formm" id="myFormm">
+       <div class="container">
+        <div class="row">
+            <div class="col-md-6"> <br>
+<form method="post" class="p-3 shadow" style="background-color:#08a086">
+    {% csrf_token %}
+   <div class="form-group">
+       <label> <b>Name</b></label>
+    <input type="text" class="form-control"  name="name" placeholder="Enter your name" required>
+</div>
+
+
+<div class="form-group">
+    <label> <b>D.O.B</b></label>
+    <input type="date" class="form-control"  name="dob" placeholder="Enter DOB" required>
+</div>
+
+
+    <div class="form-group">
+        <label> <b>Age</b></label>
+    <input type="number" class="form-control"  name="age" placeholder="Enter Your Age">
+</div>
+
+    <div  class="form-group" >
+        <label> <b>Gender</b></label> <br>
+       <input type="radio" name="gender" value="M"> Male <br>
+     <input type="radio" name="gender" value="F"> Female <br>
+<input type="radio" name="gender" value="Other"> Other <br>
+
+ </div>
+
+        <div class="form-group">
+        <label> <b>Phone Number</b></label>
+    <input type="number" class="form-control"  name="phone" placeholder="Enter Your Number" required>
+</div>
+
+      <div class="form-group">
+        <label> <b>Email</b></label>
+    <input type="email" class="form-control"  name="email" placeholder="Enter mail-id" required>
+</div>
+
+    <div class="form-group">
+        <label> <b>Address</b></label>
+             <textarea  class="form-control"  name="txt" rows="4" cols="40" maxlength="200">
+</textarea>
+
+</div>
+
+
+     <div  class="form-group"  >
+       <b> District </b> <select name="subject" id="ddl01" >
+
+  </select>
+  <br><br>
+  <b>Branch:</b> <select name="topic" id="ddl02">
+
+  </select>
+  <br><br>
+
+ </div>
+
+ <div class="form-group">
+        <label> <b>Materials Provided</b></label> <br>
+      <input type="checkbox"  name="materials" value="Credit Card">Credit Card
+<br>
+  <input type="checkbox"  name="materialss" value="Debit Card">
+     Debit Card <br>
+  <input type="checkbox"  name="materialsq" value="Cheque">
+     Cheque
+<br>
+</div>
+
+
+
+ <div class="form-group">
+        <label> <b>Account Type</b></label>
+    <select name="account">
+<option>Savings</option>
+        <option>Current</option>
+    </select>
+</div>
+    <button type="submit" class="btn btn-success"  onclick="my()">Submit</button>
+
+    <a class="btn btn-danger" href="{% url 'logout' %}">Log out</a>
+
+
+
+
+</form>
+      </div>
+        </div>
+       </div>
+</div>
+<div class="formm" id="myForm">
+              <div class="col-md-6"><br>
+
+                {% for i in task1 %}
+                <div class=" shadow card"  style="background-color:#f3fa2e">
+                    <div class="card-body ">
+                        <h5 class="card-title">{{i.name}}</h5>
+                          <p><b>DOB:{{i.dob}}</b></p>
+                        <p><b>Age:{{i.age}}</b></p>
+                         <p><b>Gender:{{i.gender}}</b></p>
+                        <p><b>Contact:{{i.phone}}</b></p>
+                        <p><b>Mail-id:{{i.email}}</b>
+                         <p><b>Address:{{i.txt}}</b></p>
+                        <p><b>District:{{i.subject}}</b></p>
+                         <p><b>Branch:{{i.topic}}</b></p>
+                         <p><b>Account type:{{i.account}}</b></p>
+                         <p><b>MAterials Provided : <br>
+                             {{i.materials}} <br>
+                             {{i.materialss}}  <br>
+                             {{i.materialsq}}</b></p>
+
+
+                    </div>
+                </div>
+                    <br>
+                  {% endfor %}
+
+
+              </div>
+
+        </div>
+
+<script>
+
+function openForm() {
+  document.getElementById("myFormm").style.display = "block";
+  document.getElementById("my").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+
+
+</script>
+
+ <script>
+
+function ddlpopulate(ddl, arr) {
+    ddl.options.length = 0;
+
+    iteropt = document.createElement('option');
+    iteropt.innerHTML = iteropt.value = '';
+    ddl.appendChild(iteropt);
+
+    for (i=0; i<arr.length; i++) {
+        iteropt = document.createElement('option');
+        iteropt.innerHTML = iteropt.value = arr[i]; //.text
+        ddl.appendChild(iteropt);
+    }
+}
+
+function ddlcascade(upper, lower, ht) {
+	objUpper = document.getElementById(upper);
+	objLower = document.getElementById(lower);
+	if (objUpper.options.length == 0) {
+		ddlpopulate(objUpper, Object.keys(ht));
+	}
+	objUpper.onchange = function() {
+		ddlpopulate(objLower, ht[objUpper.value]);
+	}
+}
+
+
+//If using jQuery, use $(document).ready, or find and call other onload handlers
+window.onload = function() {
+	hyper01 = { 'Idukii' : ['Devikulam', 'Thodupuzha', 'Peerimeedu', 'Kuttikanam'], 'Ernakulam' : ['ALuva','Edapally','Kothamangalam','Perumbavoor'], 'Kollam': ['Karunagappally', 'Kottarakara','Kunnathur','Pathanapuram'] };
+	ddlcascade('ddl01', 'ddl02', hyper01);
+}
+
+</script>
+
+{% endblock %}
